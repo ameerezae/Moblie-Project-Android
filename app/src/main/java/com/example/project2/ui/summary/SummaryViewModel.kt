@@ -3,11 +3,16 @@ package com.example.project2.ui.summary
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.project2.model.entity.Animal
+import com.example.project2.model.repository.DataRepository
 
 class SummaryViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+    val text = MutableLiveData<String>().apply {
         value = "This is summary Fragment"
     }
-    val text: LiveData<String> = _text
+
+    val animals: MutableLiveData<Array<Animal>> = MutableLiveData<Array<Animal>>().apply {
+        value = DataRepository.getAnimals()
+    }
 }

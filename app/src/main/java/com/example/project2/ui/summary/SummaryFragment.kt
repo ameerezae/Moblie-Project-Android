@@ -21,11 +21,17 @@ class SummaryFragment : Fragment() {
     ): View? {
         summaryViewModel =
                 ViewModelProvider(this).get(SummaryViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_summary, container, false)
         val textView: TextView = root.findViewById(R.id.text_summary)
+
         summaryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        summaryViewModel.animals.observe(viewLifecycleOwner, Observer {
+            // TODO: 5/19/2021  
+        })
+
         return root
     }
 }

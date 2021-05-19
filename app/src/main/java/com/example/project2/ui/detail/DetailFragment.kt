@@ -21,10 +21,15 @@ class DetailFragment : Fragment() {
     ): View? {
         detailViewModel =
                 ViewModelProvider(this).get(DetailViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_detail, container, false)
         val textView: TextView = root.findViewById(R.id.text_detail)
+
         detailViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
+        })
+        detailViewModel.animals.observe(viewLifecycleOwner, Observer {
+            // TODO: 5/19/2021
         })
         return root
     }
