@@ -1,4 +1,4 @@
-package com.example.project2.ui.gallery
+package com.example.project2.ui.summary
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.project2.R
 
-class GalleryFragment : Fragment() {
+class SummaryFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var summaryViewModel: SummaryViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        summaryViewModel =
+                ViewModelProvider(this).get(SummaryViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_summary, container, false)
+        val textView: TextView = root.findViewById(R.id.text_summary)
+        summaryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
