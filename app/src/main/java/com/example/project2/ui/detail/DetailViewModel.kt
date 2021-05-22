@@ -12,7 +12,7 @@ class DetailViewModel : ViewModel() {
         value = "This is detail Fragment"
     }
 
-    val animals: MutableLiveData<Array<Animal>> = MutableLiveData<Array<Animal>>().apply {
+    val animals: MutableLiveData<List<Animal>> = MutableLiveData<List<Animal>>().apply {
         value = DataRepository.getAnimals()
     }
 }

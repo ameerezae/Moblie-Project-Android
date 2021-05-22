@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.RecyclerView
 import com.example.project2.R
 
 class SummaryFragment : Fragment() {
@@ -24,13 +26,19 @@ class SummaryFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_summary, container, false)
         val textView: TextView = root.findViewById(R.id.text_summary)
+        val recyclerViewAnimal: RecyclerView = root.findViewById(R.id.recycler_view_animal)
 
-        summaryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        summaryViewModel.animals.observe(viewLifecycleOwner, Observer {
-            // TODO: 5/19/2021  
-        })
+//        summaryViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
+//        summaryViewModel.animals.observe(viewLifecycleOwner, {animals ->
+//            recyclerViewAnimal.adapter = AnimalAdapter()
+//            // TODO: 5/19/2021
+//        })
+
+        summaryViewModel.animals.observe(viewLifecycleOwner) { animals ->
+            recyclerViewAnimal.adapter = AnimalAdapter(animals)
+        }
 
         return root
     }

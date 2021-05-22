@@ -4,7 +4,7 @@ import com.example.project2.R
 import com.example.project2.model.entity.Animal
 
 object DataSource {
-    fun selectAnimals(): Array<Animal> {
+    fun selectAnimals(): List<Animal> {
         val iranianCheetah = Animal("Iranian Cheetah", "Mammal",
                 R.drawable.iraniancheetah, 15, "Central Iran")
         val rattlesnake = Animal("Rattlesnake", "Reptile",
@@ -16,6 +16,6 @@ object DataSource {
         val emperorPenguin = Animal("Emperor Penguin", "Bird",
                 R.drawable.emperorpenguin, 20, "Antarctica")
 
-        return arrayOf(iranianCheetah, rattlesnake, whiteWolf, redTailedHawk, emperorPenguin)
+        return listOf(iranianCheetah, rattlesnake, whiteWolf, redTailedHawk, emperorPenguin)
     }
 }
