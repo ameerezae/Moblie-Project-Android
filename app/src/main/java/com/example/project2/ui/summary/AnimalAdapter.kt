@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project2.R
 import com.example.project2.model.entity.Animal
@@ -21,6 +22,7 @@ class AnimalAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val animal = animals[position]
+        holder.animal = animal
         holder.bind(animal)
     }
 
@@ -28,11 +30,19 @@ class AnimalAdapter(
         return animals.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View, var animal: Animal? = null) : RecyclerView.ViewHolder(itemView) {
         fun bind(animal: Animal) {
             itemView.findViewById<TextView>(R.id.tvName).text = animal.Name
             itemView.findViewById<TextView>(R.id.tvCategory).text = animal.Category
             itemView.findViewById<ImageView>(R.id.ivPicture).setImageResource(animal.PhotoAddress)
+        }
+        init {
+            itemView.setOnClickListener {
+                animal?.let {
+                    var directions = SummaryFragmentDirections.actionNavSummaryToNavDetail(it)
+                    itemView.findNavController().navigate(directions)
+                }
+            }
         }
     }
 }

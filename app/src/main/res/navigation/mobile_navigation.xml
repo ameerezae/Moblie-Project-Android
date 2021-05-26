@@ -3,19 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_detail">
+    app:startDestination="@id/nav_summary">
 
     <fragment
         android:id="@+id/nav_summary"
         android:name="com.example.project2.ui.summary.SummaryFragment"
         android:label="@string/menu_summary"
-        tools:layout="@layout/fragment_summary" />
+        tools:layout="@layout/fragment_summary" >
+        <action
+            android:id="@+id/action_nav_summary_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_detail"
         android:name="com.example.project2.ui.detail.DetailFragment"
         android:label="@string/menu_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="animal"
+            app:argType="com.example.project2.model.entity.Animal" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_about"
