@@ -14,4 +14,4 @@ Animals and Species
 
 And here is the final result of this project.
 
-<img src="./demo.gif" width=550>
+<img src="./demo.gif" width=auto height=auto>
