@@ -41,9 +41,9 @@ class DetailFragment : Fragment() {
         val animalImage: ImageView = view.findViewById<ImageView>(R.id.iv_profile)
 
         animalName.text = animal.Name
-        animalAverage.text = animal.AverageLongevity.toString()
-        animalCategory.text = animal.Category
-        animalHabitat.text = animal.Habitat
+        animalAverage.text = "Average Longevity: " + animal.AverageLongevity.toString()
+        animalCategory.text = "Category: " + animal.Category
+        animalHabitat.text = "Habitat: " + animal.Habitat
         animalImage.setImageResource(animal.PhotoAddress)
 
     }
